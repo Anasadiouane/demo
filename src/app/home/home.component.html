@@ -1,0 +1,25 @@
+<div class="home-root">
+  <h2>Tic-Tac-Toe</h2>
+
+  <div class="status">
+    <ng-container *ngIf="winner(); else turn">
+      <span *ngIf="winner() !== 'Draw'">Winner: {{ winner() }}</span>
+      <span *ngIf="winner() === 'Draw'">It's a draw!</span>
+    </ng-container>
+    <ng-template #turn>Next: {{ xIsNext() ? 'X' : 'O' }}</ng-template>
+  </div>
+
+  <div class="board">
+    <button
+      class="cell"
+      *ngFor="let cell of board(); index as i"
+      (click)="makeMove(i)"
+    >
+      {{ cell }}
+    </button>
+  </div>
+
+  <div class="controls">
+    <button class="reset" (click)="reset()">Reset</button>
+  </div>
+</div>
